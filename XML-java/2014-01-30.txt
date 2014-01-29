@@ -1,0 +1,2 @@
+2014-01-30 12:20:04 _user _typeOperation _base _table _field _oldValue _newValue  
+2014-01-30 12:20:27 _user _typeOperation _base _table _field _oldValue _newValue  
