@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<databases xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="databases.xsd">
+	<metadata>
+		<author>root</author>
+		<creation_date>10-11-2013</creation_date>
+	</metadata>
+	<database>		
+		<name>Project Series</name>
+		<tables>
+			<table>
+				<name>series</name>
+				<columns>
+					<column>
+						<name>id_serie</name>
+						<type>primary key</type>
+					</column>
+					<column>
+						<name>nom_serie</name>
+						<type>string</type>
+					</column>
+					<column>
+						<name>description_serie</name>
+						<type>string</type>
+					</column>
+				</columns>
+				<rows>
+					<row>
+						<fields>
+							<field column_name="id_serie">1</field>
+							<field column_name="nom_serie">Strike Back</field>
+							<field column_name="description_serie">An adaptation of SAS soldier Chris Ryan's novel.</field>
+						</fields>
+					</row>
+					<row>
+						<fields>
+							<field column_name="id_serie">2</field>
+							<field column_name="nom_serie">Person of interest</field>
+							<field column_name="description_serie">Person of Interest is a crime thriller about a presumed dead former-CIA agent, Reese, who teams up with a mysterious billionaire, Finch, to prevent violent crimes by using their own brand of vigilante justice.</field>
+						</fields>
+					</row>
+				</rows>	
+			</table>
+			<table>
+				<name>episodes</name>
+				<columns>
+					<column>
+						<name>id_episode</name>
+						<type>primary key</type>
+					</column>
+					<column>
+						<name>numero_saison</name>
+						<type>int</type>
+					</column>
+					<column>
+						<name>numero_episode</name>
+						<type>int</type>
+					</column>
+					<column>
+						<name>nom_episode</name>
+						<type>string</type>
+					</column>
+					<column>
+						<name>description_episode</name>
+						<type>string</type>
+					</column>
+					<column>
+						<name>id_serie</name>
+						<type>foreign key</type>
+						<reference>
+							<table_reference>series</table_reference>
+							<column_reference>id_serie</column_reference>
+						</reference>
+					</column>
+				</columns>
+				<rows>
+					<row>
+						<fields>
+							<field column_name="id_episode">1</field>
+							<field column_name="numero_saison">1</field>
+							<field column_name="numero_episode">1</field>
+							<field column_name="nom_episode">Pilot</field>
+							<field column_name="description_episode">Reese and Finch must figure out whether a young prosecutor is a victim or a suspect.</field>
+							<field column_name="id_serie">2</field>
+						</fields>
+					</row>
+					<row>
+						<fields>
+							<field column_name="id_episode">2</field>
+							<field column_name="numero_saison">2</field>
+							<field column_name="numero_episode">1</field>
+							<field column_name="nom_episode">The Contingency</field>
+							<field column_name="description_episode">Reese asks Detectives Carter and Fusco for help finding Finch, who was kidnapped by his nemesis.</field>
+							<field column_name="id_serie">2</field>
+						</fields>
+					</row>
+					<row>
+						<fields>
+							<field column_name="id_episode">3</field>
+							<field column_name="numero_saison">1</field>
+							<field column_name="numero_episode">1</field>
+							<field column_name="nom_episode">Episode 1</field>
+							<field column_name="description_episode">Still haunted by the memory of a disastrous Special Forces mission which he led in 2003, John Porter is given an opportunity to redeem himself by returning to Iraq to rescue a kidnapped TV reporter.</field>
+							<field column_name="id_serie">1</field>
+						</fields>
+					</row>
+					<row>
+						<fields>
+							<field column_name="id_episode">4</field>
+							<field column_name="numero_saison">2</field>
+							<field column_name="numero_episode">1</field>
+							<field column_name="nom_episode">Project Dawn, Episode 1</field>
+							<field column_name="description_episode">British sergeant Michael Stonebridge recruits help from Ex-Delta Force operative Damien Scott when an agent named John Porter is kidnapped by a Pakistani terrorist.</field>
+							<field column_name="id_serie">1</field>
+						</fields>
+					</row>
+				</rows>	
+			</table>	
+		<table><name>Link</name><columns><column><name>id</name><type>primary key</type></column><column><name>txt</name><type>string</type></column></columns><rows/></table><table><name>ProjectTest</name><columns><column><name>id</name><type>primary key</type></column><column><name>info</name><type>string</type></column></columns><rows/></table></tables>
+	</database>
+<database><name>Pr</name><tables/></database></databases>
