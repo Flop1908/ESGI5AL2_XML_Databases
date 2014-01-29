@@ -1,7 +1,7 @@
 /**
  * 
  */
-package tools;
+package Tools;
 
 import java.io.File;
 import java.io.FileWriter;
