@@ -4,6 +4,7 @@ import org.apache.xerces.parsers.DOMParser;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
+import Model.ModelGenerateXsdFromXml;
 import Model.ModelXPATH;
 import View.ConnectionView;
 
@@ -11,7 +12,7 @@ import View.ConnectionView;
 public class Main {
 
 	public static void main(String[] args) {
-		ConnectionView wc = new ConnectionView();
+		//ConnectionView wc = new ConnectionView();
 		
 		/*ModelXPATH xpa  = new ModelXPATH();
 		DOMParser dp = new DOMParser();
@@ -28,6 +29,12 @@ public class Main {
 		xpa.ExecuteCommand();
 		
 		System.out.println(xpa.getResultat());*/
+		
+		ModelGenerateXsdFromXml gene = new ModelGenerateXsdFromXml();
+		gene.setFileNameInput("file");
+		gene.setFileNameOutput("file");
+		System.out.println(ModelGenerateXsdFromXml.GenerateXSD());
+		
 	}
 
 }
