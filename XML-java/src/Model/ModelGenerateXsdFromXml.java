@@ -16,6 +16,10 @@ public class ModelGenerateXsdFromXml {
 	private static String fileNameInput = "";
 	private static String fileNameOutput = "";
 
+	/**
+	 * Fonction de génération du XSD
+	 * @return
+	 */
 	public static boolean GenerateXSD() {
 
 		boolean conversionOK = false;
@@ -30,13 +34,15 @@ public class ModelGenerateXsdFromXml {
 			conversionOK = false;
 
 		else {
+			//Création de la ligne de commande
 			ligneDeCommande = BuildCommandLine(getFileNameInput(),
 					getFileNameOutput()).split("[ ]");
 
 		 try {
-			 	ProcessBuilder pb=new ProcessBuilder(ligneDeCommande);
-			 	Process process=pb.start();
-	            conversionOK = true;
+		 	//Envoi de la commande
+		 	ProcessBuilder pb=new ProcessBuilder(ligneDeCommande);
+		 	Process process=pb.start();
+            conversionOK = true;
 
 	        } catch (Exception e) {
 	            e.printStackTrace(System.err);
@@ -46,12 +52,19 @@ public class ModelGenerateXsdFromXml {
 		return conversionOK;
 	}
 
+	/**
+	 * Fonction de construction de la ligne de commande
+	 * @param _fileNameInput Fichier xml d'entrée
+	 * @param _fileNameOutput Fichier xsd de sortie
+	 * @return
+	 */
 	private static String BuildCommandLine(String _fileNameInput,
 			String _fileNameOutput) {
 
 		StringBuilder sb_CommandLine = new StringBuilder();
 		String cheminComplet = FindAbsolutePath();
 		
+		//On ajoute le chemin complet pour etre sur du bon déroulement
 		sb_CommandLine.append("java -jar ");
 		sb_CommandLine.append("\"" + cheminComplet + "trang.jar\" ");
 		sb_CommandLine.append("\"" + cheminComplet + getFileNameInput() + "\" ");
@@ -60,7 +73,7 @@ public class ModelGenerateXsdFromXml {
 		return sb_CommandLine.toString();
 	}
 
-	public static String FindAbsolutePath() {
+	private static String FindAbsolutePath() {
 
 		File trangJar = new File("trang.jar");
 		String absolutePath = trangJar.getAbsolutePath();
