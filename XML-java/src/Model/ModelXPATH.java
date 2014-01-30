@@ -21,13 +21,14 @@ public class ModelXPATH {
 	private String resultat;
 
 	/**
-	 * Execution de la commande la variable resultat est misà jour
+	 * Execution de la commande la variable resultat est mis à jour
 	 */
 	public void ExecuteCommand() {
 
+		//Vérif fichier pas vide
 		if (fichierXML == null)
 			resultat = "pas de fichier";
-
+		//Vérif commande remplie
 		else if (commandeXPATH.isEmpty())
 			resultat = "pas de commande";
 
