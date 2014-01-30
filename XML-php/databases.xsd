@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <xs:import namespace="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="xsi.xsd"/>
+  <!-- élément racine : Liste de bases de données -->
   <xs:element name="databases">
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="database"/>
         <xs:element ref="metadata"/>
       </xs:sequence>
+	  <!-- Reference au schéma -->
       <xs:attribute ref="xsi:noNamespaceSchemaLocation" use="required"/>
     </xs:complexType>
   </xs:element>
+  <!-- Les meta-informations de la liste de base de données -->
   <xs:element name="metadata">
     <xs:complexType>
       <xs:sequence>
@@ -18,12 +21,15 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <!-- Créateur de la liste de bases de données -->
   <xs:element name="author">
     <xs:complexType/>
   </xs:element>
+  <!-- Date de la création de la liste de bases de données -->
   <xs:element name="creation_date">
     <xs:complexType/>
   </xs:element>
+  <!-- Représente une base de données -->
   <xs:element name="database">
     <xs:complexType>
       <xs:sequence>
@@ -31,7 +37,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  
+  <!-- Liste des tables d'un base de données -->
   <xs:element name="tables">
     <xs:complexType>
       <xs:sequence>
@@ -39,6 +45,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <!-- Une table d'une base de données -->
   <xs:element name="table">
     <xs:complexType>
       <xs:sequence>
@@ -48,6 +55,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <!-- Liste des columns d'une table -->
   <xs:element name="columns">
     <xs:complexType>
       <xs:sequence>
@@ -55,6 +63,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <!-- Une column d'une table (une table doit avoir au moins une colonne)-->
   <xs:element name="column">
     <xs:complexType>
       <xs:sequence>
@@ -64,7 +73,9 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <!-- Type d'information qui sera stockée dans cette column -->
   <xs:element name="type" type="xs:NCName"/>
+  <!-- Element servant de lien entre deux champs -->
   <xs:element name="reference">
     <xs:complexType>
       <xs:sequence>
@@ -73,8 +84,11 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <!-- Nom de la table sur laquelle faire la référence -->
   <xs:element name="table_reference" type="xs:NCName"/>
+  <!-- Nom du champ de la table sur laquelle faire la référence -->
   <xs:element name="column_reference" type="xs:NCName"/>
+  <!-- Liste des lignes contenant les valeurs d'une table -->
   <xs:element name="rows">
     <xs:complexType>
       <xs:sequence>
@@ -82,6 +96,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <!-- Element représentant une ligne de valeur d'une table -->
   <xs:element name="row">
     <xs:complexType>
       <xs:sequence>
@@ -89,6 +104,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <!-- Liste des champs d'une ligne -->
   <xs:element name="fields">
     <xs:complexType>
       <xs:sequence>
@@ -96,11 +112,15 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <!-- Contenu d'un champ -->
   <xs:element name="field">
     <xs:complexType mixed="true">
+	  <!-- Nom de la colonne correspondant au champ -->
       <xs:attribute name="column_name" type="xs:NCName"/>
+	  <!-- Ancien nom pour raison de compatibilité -->
       <xs:attribute name="name" type="xs:NCName"/>
     </xs:complexType>
   </xs:element>
+  <!-- nom d'un élément -->
   <xs:element name="name" type="xs:NCName"/>
 </xs:schema>
