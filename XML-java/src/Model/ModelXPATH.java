@@ -12,27 +12,39 @@ import org.w3c.dom.Document;
 
 /**
  * @author Florent
- *
+ * 
  */
 public class ModelXPATH {
-	
+
 	private Document fichierXML;
 	private String commandeXPATH;
 	private String resultat;
 
+	/**
+	 * Execution de la commande la variable resultat est misà jour
+	 */
 	public void ExecuteCommand() {
-		try{
-			//création du XPath 
-			XPathFactory fabrique = XPathFactory.newInstance();
-			XPath xpath = fabrique.newXPath();
-			
-			//évaluation de l'expression XPath
-			XPathExpression exp = xpath.compile(commandeXPATH);
-			setResultat(exp.evaluate(fichierXML));
-			
-			System.out.println(resultat);
-		}catch(XPathExpressionException xpee){
-			xpee.printStackTrace();
+
+		if (fichierXML == null)
+			resultat = "pas de fichier";
+
+		else if (commandeXPATH.isEmpty())
+			resultat = "pas de commande";
+
+		else {
+
+			try {
+				// création du XPath
+				XPathFactory fabrique = XPathFactory.newInstance();
+				XPath xpath = fabrique.newXPath();
+
+				// évaluation de l'expression XPath
+				XPathExpression exp = xpath.compile(commandeXPATH);
+				setResultat(exp.evaluate(fichierXML));
+
+			} catch (XPathExpressionException xpee) {
+				xpee.printStackTrace();
+			}
 		}
 	}
 
@@ -44,7 +56,8 @@ public class ModelXPATH {
 	}
 
 	/**
-	 * @param fichierXML the fichierXML to set
+	 * @param fichierXML
+	 *            the fichierXML to set
 	 */
 	public void setFichierXML(Document fichierXML) {
 		this.fichierXML = fichierXML;
@@ -58,7 +71,8 @@ public class ModelXPATH {
 	}
 
 	/**
-	 * @param commandeXPATH the commandeXPATH to set
+	 * @param commandeXPATH
+	 *            the commandeXPATH to set
 	 */
 	public void setCommandeXPATH(String commandeXPATH) {
 		this.commandeXPATH = commandeXPATH;
@@ -72,11 +86,11 @@ public class ModelXPATH {
 	}
 
 	/**
-	 * @param resultat the resultat to set
+	 * @param resultat
+	 *            the resultat to set
 	 */
 	public void setResultat(String resultat) {
 		this.resultat = resultat;
 	}
-	
-	
+
 }
